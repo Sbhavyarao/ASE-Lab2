@@ -1,0 +1,55 @@
+body,
+html {
+  height: 100%;
+  margin: 0;
+}
+
+.bg {
+  background-image: url("../assets/image1.png");
+
+}
+
+.input-form-container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50%;
+  display: flex;
+  flex-flow: column;
+}
+.table-responsive{
+  display: table;
+}
+
+.input-form {
+  background-color: #ededed;
+  width: 400px;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 15px;
+  border-color: #d2d2d2;
+  border-width: 20px;
+  box-shadow: 0 1px 0 #cfcfcf;
+}
+table {
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid black;
+  padding: 0.25rem;
+}
+
+tr {
+  height: 10%;
+}
+
+.error-text {
+  font-size: 150%;
+  color : orangered;
+  margin-top: 20px;
+}
+

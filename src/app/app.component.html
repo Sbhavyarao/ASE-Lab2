@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+    rel="stylesheet"
+    id="bootstrap-css">
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1">
+</head>
+
+<body class="bg" style="overflow-x: auto">
+  <div class="input-form-container">
+    <div class="input-form">
+      <div>
+        <h4>Hourly Weather Forecast  <i class="material-icons" style="font-size:40px;color:deepskyblue;text-shadow:2px 2px 4px #000000;">cloud</i>
+        </h4>
+      </div>
+      <div>
+        <input type="text"
+          id="zipCode" name="zipCode"
+          class="form-control input-sm "
+          placeholder="Enter Zip code"
+          [(ngModel)]="zipCode" [disabled]="cityId!==''" />
+        <h5 style="text-align: center">or</h5>
+        <input type="text"
+               id="cityId" name="cityId"
+               class="form-control input-sm "
+               placeholder="Enter city Id"
+               [(ngModel)]="cityId" [disabled]="zipCode!==''"/>
+        <br>
+        <button type="button"
+          class="btn btn-primary"
+          (click)="getDetails()">Check</button>
+        <button type="button"
+          class="btn pull-right"
+          (click)="clearDetails()">Clear</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" *ngIf="requiredWeatherData != null && requiredWeatherData.length > 0"  >
+    <div class="card bg-light text-dark">
+      <div class="card-body">
+        <div class="container" >
+          <div class="table-responsive">
+          <table class="col-xs-6 table table-bordered table-hover table-striped mb-0" cellspacing="0">
+            <thead>
+            <tr style="background: lightblue">
+              <th>Temperature in K</th>
+              <th>Pressure hPa</th>
+              <th>Humidity %</th>
+              <th>Wind mps</th>
+              <th>Time</th>
+              <th>Overall Weather</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let item of requiredWeatherData">
+              <td>
+                {{ item.main.temp }}
+              </td>
+              <td>
+                {{ item.main.pressure }}
+              </td>
+              <td>
+                {{ item.main.humidity }}
+              </td>
+              <td>
+                {{ item.wind.speed }}
+              </td>
+              <td>
+                {{ item.dt_txt.slice(10) }}
+              </td>
+              <td>
+                {{ item.weather[0].description }}
+              </td>
+            </tr>
+            </tbody>
+          </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
